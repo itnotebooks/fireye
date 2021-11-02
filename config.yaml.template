@@ -1,0 +1,72 @@
+# 项目名称
+project: 测试项目
+
+# 如果platform被设置为container，表示是运行在container中的，则需要为fireye设置目标namespace
+# 不设置此项，表示运行在非容器环境
+#platform: container
+
+# 当platform为container时有效
+#namespace: default
+
+# 模块及对应的Error日志路径配置
+# platform为container时，可不需要配置app，默认读取namespace下所有deployment的日志
+logdirs:
+  - name: admin
+    path: /var/apps/logs/admin/admin.error.log
+
+# Error日志监控时间范围，单位是分
+minutes: 30
+
+# 钉钉群机器人通知配置
+dingtalk_accesstoken:
+
+# 邮件通知，收信人配置
+#邮件样式如下：
+#
+#  --------ERROR Message--------
+#  Project: A部门
+#  Mode: admin
+#  Global IP: 1.1.1.1
+#  Private IP: 10.10.10.10
+#  Log File: /var/apps/logs/admin/admin.error.log
+#  ---------------------------
+#
+#  2021-11-02 07:12:03.846 ERROR 31935 --- [ajp-nio-8009-exec-7372] o.s.boot.context.web.NullPoint     :
+#  Forwarding to error page from request [/v1/service/] due
+#  to exception [
+#  ### Error updating database.
+#
+mail_to: []
+mail_cc: []
+
+
+# 邮件SMTP中继配置
+smtp:
+  smtp_enable: true
+  smtp_address:
+  smtp_port: 465
+  smtp_username:
+  smtp_password:
+  smtp_starttls: true
+
+# 关键词，默认：ERROR
+keyWord: ERROR
+
+# 日期时间格式定义，默认："2006-01-02 15:04"
+dateFormat: "2006-01-02 15:04"
+
+# 程序运行日志，默认:/tmp/fireye.log
+log: /tmp/fireye.log
+
+# 获取本机公网IP时使用的外部API
+gip_check:
+
+# 当错误信息中包含以下关键字时，不触发告警
+exclude_keys: [ ]
+
+# 启用debug调试
+debug:
+  enable: false
+  minutes: 30
+  mail_to: [ ]
+  dingtalk_accesstoken:
