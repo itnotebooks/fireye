@@ -42,3 +42,9 @@ go build
 ```shell
 ./fireye -c /path/config.yaml
 ```
+
+
+<p align="center">
+<img src="static/dingtalk.png"/>
+<img src="static/email.png"/>
+</p>
